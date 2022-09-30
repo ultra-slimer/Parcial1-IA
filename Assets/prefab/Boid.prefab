@@ -204,9 +204,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ffb45aad2d31749bf2e841d41b528e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 5
-  maxForce: 0.062
-  viewRadius: 1.5
-  separationWeight: 2.08
-  cohesionWeight: 1.94
-  alignmentWeight: 1
+  maxSpeed: 10
+  maxForce: 0.028
+  viewRadius: 3
+  separationRadius: 1
+  separationWeight: 2.5
+  cohesionWeight: 1.37
+  alignmentWeight: 1.37

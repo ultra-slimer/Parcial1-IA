@@ -11,6 +11,7 @@ public class Boid : MonoBehaviour
 
     [Header("Flocking")]
     public float viewRadius;
+    public float separationRadius;
     public static List<Boid> allBoids = new List<Boid>();
     [Range(0f, 2.5f)]
     public float separationWeight = 1;
@@ -32,7 +33,9 @@ public class Boid : MonoBehaviour
  
     void Update()
     {
-      
+        //AddForce(Separation() * separationWeight);
+        //AddForce(Alignment() * alignamentWeight);
+        //AddForce(Cohesion() * cohesionWeight);
         AddForce(Separation() * separationWeight + Alignment() * alignmentWeight + Cohesion() * cohesionWeight);
 
         transform.position += _velocity * Time.deltaTime;
@@ -123,6 +126,8 @@ public class Boid : MonoBehaviour
     {
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(transform.position, viewRadius);
-      
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, separationRadius);
+
     }
 }
