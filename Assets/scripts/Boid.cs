@@ -36,6 +36,7 @@ public class Boid : MonoBehaviour
         //AddForce(Separation() * separationWeight);
         //AddForce(Alignment() * alignamentWeight);
         //AddForce(Cohesion() * cohesionWeight);
+        //Esto se puede hacer en una linea de codigo ;)
         AddForce(Separation() * separationWeight + Alignment() * alignmentWeight + Cohesion() * cohesionWeight);
 
         transform.position += _velocity * Time.deltaTime;
