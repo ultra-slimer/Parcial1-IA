@@ -20,6 +20,11 @@ public class Boid : MonoBehaviour
     [Range(0f, 2.5f)]
     public float alignmentWeight = 1;
 
+    [Header("Arrive")]
+    public Transform target;
+    public float arriveRadius;
+    public bool arriving;
+
 
    
     void Start()
@@ -37,6 +42,20 @@ public class Boid : MonoBehaviour
         //AddForce(Alignment() * alignamentWeight);
         //AddForce(Cohesion() * cohesionWeight);
         //Esto se puede hacer en una linea de codigo ;)
+
+        if (arriving && GameManager.instance.foodPrefab != null)
+        {
+            
+            AddForce(Arrive(GameManager.instance.foodPrefab.transform.position));
+
+            transform.position += _velocity * Time.deltaTime;
+            transform.forward = _velocity;
+
+            CheckBounds();
+
+            return;
+        }
+
         AddForce(Separation() * separationWeight + Alignment() * alignmentWeight + Cohesion() * cohesionWeight);
 
         transform.position += _velocity * Time.deltaTime;
@@ -107,6 +126,30 @@ public class Boid : MonoBehaviour
         return CalculateSteering(desired);
     }
 
+    Vector3 Arrive(Vector3 target)
+    {
+        Vector3 desired = target - transform.position;
+     
+        
+        if (desired.magnitude <= arriveRadius)
+        {
+            float speed = maxSpeed * (desired.magnitude / arriveRadius);
+            desired.Normalize();
+            desired *= speed;
+        }
+        else
+        {
+            //return Seek(target);
+            desired.Normalize();
+            desired *= maxSpeed;
+        }
+        
+        
+        Vector3 steering = desired - _velocity;
+        steering = Vector3.ClampMagnitude(steering, maxForce);
+
+        return steering;
+    }
 
     Vector3 CalculateSteering(Vector3 desired)
     {
@@ -129,6 +172,10 @@ public class Boid : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, viewRadius);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, separationRadius);
+
+        //arrive
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, arriveRadius);
 
     }
 }

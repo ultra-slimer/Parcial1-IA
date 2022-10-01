@@ -7,13 +7,27 @@ public class GameManager : MonoBehaviour
     public float boundHeight = 10;
     public float boundWidth = 18;
 
+    public GameObject foodPrefab;
+
 
     public static GameManager instance;
+    public bool canSpawn;
+    public float TimeSpawn;
 
+   
     private void Awake()
     {
         if (instance == null) instance = this;
         else Destroy(gameObject);
+    }
+
+    public void Update()
+    {
+
+        if (canSpawn && foodPrefab != null) StartCoroutine(SpawnerTime());
+        else StopCoroutine(SpawnerTime());
+
+      
     }
 
     public Vector2 SetObjectBoundPosition(Vector2 pos)
@@ -28,6 +42,7 @@ public class GameManager : MonoBehaviour
         return pos;
     }
 
+    
 
     private void OnDrawGizmos()
     {
@@ -42,5 +57,33 @@ public class GameManager : MonoBehaviour
         Gizmos.DrawLine(topRight, botRight);
         Gizmos.DrawLine(botRight, botLeft);
         Gizmos.DrawLine(botLeft, topLeft);
+    }
+
+    public void Spawn()
+    {
+        Vector3 randowSpawn = new Vector3(Random.Range(boundWidth / 2, -boundWidth / 2), Random.Range(boundHeight / 2, -boundHeight / 2));
+        //Instantiate(foodPrefab, randowSpawn, Quaternion.identity);
+        Debug.Log("creando");
+    }
+
+    public void DestroyFood(GameObject food)
+    {
+        Destroy(food);
+    }
+
+    
+
+    IEnumerator SpawnerTime()
+    {
+        yield return new WaitForSeconds(TimeSpawn);
+        Spawn();
+        yield return new WaitForSeconds(TimeSpawn);
+        /*
+        Vector3 randowSpawn = new Vector3(Random.Range(boundWidth / 2, -boundWidth / 2), Random.Range(boundHeight / 2, -boundHeight / 2));
+        Instantiate(foodPrefab, randowSpawn, Quaternion.identity);      
+        Debug.Log("creando");
+        */
+
+       
     }
 }
