@@ -72,6 +72,7 @@ public class Agent : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, range);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, chaseChangeRange);
+        Gizmos.color = Color.green;
         foreach (var w in allWaypoints){
             Gizmos.DrawLine(transform.position, w.position);
         }
@@ -130,16 +131,6 @@ public class Agent : MonoBehaviour
         return _velocity;
     }
 
-    public Vector3 Seek(Vector3 target)
-    {
-        Vector3 desired = target - transform.position;
-        desired.Normalize();
-        desired *= speed;
-        Vector3 steering = desired - GetVelocity();
-        steering = Vector3.ClampMagnitude(steering, maxForce);
-
-        return steering;
-    }
 
     public void Move()
     {

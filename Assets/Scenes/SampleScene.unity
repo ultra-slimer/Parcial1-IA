@@ -347,10 +347,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hunter
       objectReference: {fileID: 0}
-    - target: {fileID: 409506323560578166, guid: 5cbbf294f21cc5a499246dbff4cbebf8, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 2146372701304374396, guid: 5cbbf294f21cc5a499246dbff4cbebf8, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -394,34 +390,6 @@ PrefabInstance:
     - target: {fileID: 2146372701304374396, guid: 5cbbf294f21cc5a499246dbff4cbebf8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7483619992317440546, guid: 5cbbf294f21cc5a499246dbff4cbebf8, type: 3}
-      propertyPath: range
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7483619992317440546, guid: 5cbbf294f21cc5a499246dbff4cbebf8, type: 3}
-      propertyPath: speed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7483619992317440546, guid: 5cbbf294f21cc5a499246dbff4cbebf8, type: 3}
-      propertyPath: maxForce
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7483619992317440546, guid: 5cbbf294f21cc5a499246dbff4cbebf8, type: 3}
-      propertyPath: rechargeTime
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7483619992317440546, guid: 5cbbf294f21cc5a499246dbff4cbebf8, type: 3}
-      propertyPath: consumptionTime
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7483619992317440546, guid: 5cbbf294f21cc5a499246dbff4cbebf8, type: 3}
-      propertyPath: chaseChangeRange
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7483619992317440546, guid: 5cbbf294f21cc5a499246dbff4cbebf8, type: 3}
-      propertyPath: allWaypoints.Array.size
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7483619992317440546, guid: 5cbbf294f21cc5a499246dbff4cbebf8, type: 3}
       propertyPath: allWaypoints.Array.data[0]

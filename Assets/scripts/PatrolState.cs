@@ -43,7 +43,7 @@ public class PatrolState : IState
         //Debug.Log(nextWaypoint.position + "        " + _agent.transform.position + "        ");
         //_agent.transform.position += _agent.transform.forward * _agent.speed * Time.deltaTime;
 
-        _agent.AddForce(dir);
+        _agent.AddForce(Seek(nextWaypoint.position));
         _agent.Move();
         _agent.CheckBounds();
         if (dir.magnitude <= 0.3f)
@@ -112,5 +112,15 @@ public class PatrolState : IState
         _canConsume = false;
         yield return new WaitForSeconds(_consumptionTime);
         _canConsume = true;
+    }
+    Vector3 Seek(Vector3 target)
+    {
+        Vector3 desired = target - _agent.transform.position;
+        desired.Normalize();
+        desired *= _agent.speed;
+        Vector3 steering = desired - _agent.GetVelocity();
+        steering = Vector3.ClampMagnitude(steering, _agent.maxForce);
+
+        return steering;
     }
 }
