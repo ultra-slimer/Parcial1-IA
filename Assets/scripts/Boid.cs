@@ -43,7 +43,7 @@ public class Boid : MonoBehaviour
         //AddForce(Cohesion() * cohesionWeight);
         //Esto se puede hacer en una linea de codigo ;)
 
-        if (arriving && GameManager.instance.foodPrefab != null)
+        if (Vector3.Distance(transform.position, GameManager.instance.foodPrefab.transform.position) <= viewRadius && arriving && GameManager.instance.foodPrefab != null)
         {
             
             AddForce(Arrive(GameManager.instance.foodPrefab.transform.position));
@@ -129,8 +129,18 @@ public class Boid : MonoBehaviour
     Vector3 Arrive(Vector3 target)
     {
         Vector3 desired = target - transform.position;
-     
-        
+
+        float speed = maxSpeed * (desired.magnitude / arriveRadius);
+        desired.Normalize();
+        desired *= speed;
+
+        if (speed == 0)
+        {
+            //Destroy(GameManager.instance.foodPrefab);
+        }
+
+
+        /*
         if (desired.magnitude <= arriveRadius)
         {
             float speed = maxSpeed * (desired.magnitude / arriveRadius);
@@ -143,6 +153,7 @@ public class Boid : MonoBehaviour
             desired.Normalize();
             desired *= maxSpeed;
         }
+        */
         
         
         Vector3 steering = desired - _velocity;
@@ -181,5 +192,10 @@ public class Boid : MonoBehaviour
     public Vector3 GetVelocity()
     {
         return _velocity;
+    }
+
+    public void Death(GameObject c)
+    {
+        
     }
 }

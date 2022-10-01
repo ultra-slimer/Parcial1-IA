@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
     public float boundWidth = 18;
 
     public GameObject foodPrefab;
-
+    public static List<GameObject> allfoods = new List<GameObject>();
+    
 
     public static GameManager instance;
     public bool canSpawn;
@@ -24,7 +25,11 @@ public class GameManager : MonoBehaviour
     public void Update()
     {
 
-        if (canSpawn && foodPrefab != null) StartCoroutine(SpawnerTime());
+        if (canSpawn && foodPrefab != null)
+        {
+            StartCoroutine(SpawnerTime());
+           
+        }  
         else StopCoroutine(SpawnerTime());
 
       
@@ -61,14 +66,17 @@ public class GameManager : MonoBehaviour
 
     public void Spawn()
     {
+        GameObject newfood = new GameObject("foodPrefab");
         Vector3 randowSpawn = new Vector3(Random.Range(boundWidth / 2, -boundWidth / 2), Random.Range(boundHeight / 2, -boundHeight / 2));
-        //Instantiate(foodPrefab, randowSpawn, Quaternion.identity);
-        Debug.Log("creando");
+        Instantiate(newfood, randowSpawn, Quaternion.identity);
+        allfoods.Add(newfood);
+        //Debug.Log("creando");
     }
 
     public void DestroyFood(GameObject food)
     {
         Destroy(food);
+        allfoods.Remove(food);
     }
 
     
@@ -76,6 +84,7 @@ public class GameManager : MonoBehaviour
     IEnumerator SpawnerTime()
     {
         yield return new WaitForSeconds(TimeSpawn);
+        Debug.Log("creando");
         Spawn();
         yield return new WaitForSeconds(TimeSpawn);
         /*
