@@ -12,8 +12,7 @@ public class PatrolState : IState
     private float _consumptionTime, _consumptionRate;
     private int _currentWaypoint = 0;
     private FiniteStateMachine _fsm;
-    private float EnergyConsumptionRate;
-    private bool _canConsume = true;
+    private bool _canConsume = false;
 
     public PatrolState(Agent a, FiniteStateMachine fsm)
     {
@@ -25,7 +24,7 @@ public class PatrolState : IState
 
     public void OnEnter()
     {
-        _agent.ChangeColor(Color.red);
+        _agent.ChangeColor(Color.blue);
         Debug.Log("Entre a Patrol");
     }
 
@@ -41,13 +40,16 @@ public class PatrolState : IState
         Transform nextWaypoint = _agent.allWaypoints[_currentWaypoint];
         Vector3 dir = nextWaypoint.position - _agent.transform.position;
         _agent.transform.forward = dir;
-        Debug.Log(nextWaypoint.position + "        " + _agent.transform.position + "        ");
-        _agent.transform.position += _agent.transform.forward * _agent.speed * Time.deltaTime;
+        //Debug.Log(nextWaypoint.position + "        " + _agent.transform.position + "        ");
+        //_agent.transform.position += _agent.transform.forward * _agent.speed * Time.deltaTime;
 
+        _agent.AddForce(dir);
+        _agent.Move();
+        _agent.CheckBounds();
         if (dir.magnitude <= 0.3f)
         {
             _currentWaypoint++;
-            Debug.LogWarning("Changed Waypoint to " + _currentWaypoint);
+            //Debug.LogWarning("Changed Waypoint to " + _currentWaypoint);
             if (_currentWaypoint > _agent.allWaypoints.Length - 1)
             {
                 _currentWaypoint = 0;
@@ -84,6 +86,20 @@ public class PatrolState : IState
         {
             _canConsume = true;
         }
+
+        foreach (var item in Boid.allBoids)
+        {
+            //if (item == this) continue;
+
+            if (Vector3.Distance(_agent.transform.position, item.transform.position) <= _agent.range)
+            {
+                //desired += item.transform.position;
+                //count++;
+                _agent.selectBoid(item);
+                //Debug.LogWarning(_agent.getBoid());
+                _fsm.ChangeState(AgentStates.Chase);
+            }
+        }
     }
 
     public void OnExit()
@@ -92,7 +108,7 @@ public class PatrolState : IState
     }
     public IEnumerator Cooldown()
     {
-        Debug.Log("a");
+        //Debug.Log("a");
         _canConsume = false;
         yield return new WaitForSeconds(_consumptionTime);
         _canConsume = true;

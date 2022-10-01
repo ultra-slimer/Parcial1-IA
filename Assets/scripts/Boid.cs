@@ -178,4 +178,8 @@ public class Boid : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, arriveRadius);
 
     }
+    public Vector3 GetVelocity()
+    {
+        return _velocity;
+    }
 }

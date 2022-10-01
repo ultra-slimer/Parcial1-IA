@@ -8,7 +8,7 @@ public class IdleState : IState
 {
     private float _rechargeTime, _rechargeRate;
     private float _time;
-    private bool _canRecover = true;
+    private bool _canRecover = false;
     private Agent _agent;
     FiniteStateMachine _fsm;
 
@@ -23,6 +23,7 @@ public class IdleState : IState
     public void OnEnter()
     {
         _agent.transform.position = _agent.transform.position;
+        _agent.ChangeColor(Color.yellow);
         Debug.Log("Entre a Idle");
     }
 

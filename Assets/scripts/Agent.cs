@@ -11,19 +11,25 @@ public enum AgentStates
 
 public class Agent : MonoBehaviour
 {
+    [Range(0, 0.1f)]
+    public float maxForce = 0.1f;
     private float _energy;
-    public float consumptionTime;
+    public float consumptionTime = 5;
     [HideInInspector]
     public float consumptionRate;
     public float maxEnergy = 50;
-    public float rechargeTime = 5;
+    public float rechargeTime = 2.5f;
     [HideInInspector]
     public float rechargeRate;
     public float speed = 5;
+    private Vector3 _velocity;
     private FiniteStateMachine _FSM;
     public Transform[] allWaypoints;
-    [Range(0.5f, 3)]
+    [Range(1.5f, 3)]
     public float range;
+    [Range(0.5f, 1)]
+    public float chaseChangeRange;
+    private Boid chasedBoid;
 
     // Start is called before the first frame update
     void Start()
@@ -39,8 +45,14 @@ public class Agent : MonoBehaviour
         _FSM.AddState(AgentStates.Idle, idle);
         _FSM.AddState(AgentStates.Patrol, new PatrolState(this, _FSM));
         _FSM.AddState(AgentStates.Chase, chase);
-
-        _FSM.ChangeState(AgentStates.Idle);
+        if(_energy > 0)
+        {
+            _FSM.ChangeState(AgentStates.Patrol);
+        }
+        else
+        {
+            _FSM.ChangeState(AgentStates.Idle);
+        }
     }
 
     // Update is called once per frame
@@ -56,9 +68,11 @@ public class Agent : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, range);
-        foreach(var w in allWaypoints){
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, chaseChangeRange);
+        foreach (var w in allWaypoints){
             Gizmos.DrawLine(transform.position, w.position);
         }
     }
@@ -95,5 +109,46 @@ public class Agent : MonoBehaviour
             Debug.Log("Recuperando " + true);
             return true; //on true it continues
         }
+    }
+
+    public void selectBoid(Boid b)
+    {
+        chasedBoid = b;
+        print(chasedBoid);
+    }
+    public Boid getBoid()
+    {
+        return chasedBoid;
+    }
+    public void AddForce(Vector3 force)
+    {
+        _velocity += force;
+        _velocity = Vector3.ClampMagnitude(_velocity, speed);
+    }
+    public Vector3 GetVelocity()
+    {
+        return _velocity;
+    }
+
+    public Vector3 Seek(Vector3 target)
+    {
+        Vector3 desired = target - transform.position;
+        desired.Normalize();
+        desired *= speed;
+        Vector3 steering = desired - GetVelocity();
+        steering = Vector3.ClampMagnitude(steering, maxForce);
+
+        return steering;
+    }
+
+    public void Move()
+    {
+        transform.position += _velocity * Time.deltaTime;
+        transform.forward = _velocity;
+    }
+
+    public void CheckBounds()
+    {
+        transform.position = GameManager.instance.SetObjectBoundPosition(transform.position);
     }
 }

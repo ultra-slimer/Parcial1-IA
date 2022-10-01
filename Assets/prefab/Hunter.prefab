@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 402730807670348131}
   - component: {fileID: 7940887751353858341}
   - component: {fileID: 7483619992317440546}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hunter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,6 +108,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca499f5c2295ce6428429b328db94607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxForce: 0.1
+  consumptionTime: 4
+  consumptionRate: 0
+  maxEnergy: 50
+  rechargeTime: 1.5
+  rechargeRate: 0
   speed: 5
-  allWaypoints: []
-  range: 0
+  allWaypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  range: 3
+  chaseChangeRange: 1.5
