@@ -50,8 +50,8 @@ public class ChaseState : IState
         if (dir.magnitude <= 0.3f)
         {
             var temp = _agent.getBoid();
-            //_agent.selectBoid(null);
-            //temp.death();
+            _agent.selectBoid(null);
+            temp.Death(temp.gameObject);
             _fsm.ChangeState(AgentStates.Patrol);
         }
 
