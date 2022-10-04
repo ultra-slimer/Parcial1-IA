@@ -22,6 +22,7 @@ public class Boid : MonoBehaviour
 
     [Header("Arrive")]
     public Transform target;
+    public GameObject gameTarget;
     public float arriveRadius;
     public bool arriving;
 
@@ -56,6 +57,7 @@ public class Boid : MonoBehaviour
             {
                
                 Vector3 foodtarget = item.transform.position;
+                gameTarget = item;
 
                 transform.position += _velocity * Time.deltaTime;
                 transform.forward = _velocity;
@@ -163,14 +165,9 @@ public class Boid : MonoBehaviour
         desired *= speed;
 
 
-        foreach(GameObject item in GameManager.instance.allfoods)
+        if (desired.magnitude <= 0.3f)
         {
-            if (desired.magnitude <= 0.3f)
-            {
-                Destroy(item);
-                GameManager.instance.allfoods.Remove(item);
-            }
-
+            GameManager.instance.DestroyFood(gameTarget);
         }
        
         return CalculateSteering(desired);
