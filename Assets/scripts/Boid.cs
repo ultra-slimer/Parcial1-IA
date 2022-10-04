@@ -236,8 +236,9 @@ public class Boid : MonoBehaviour
         return _velocity;
     }
 
-    public void Death(GameObject c)
+    public void Death(Boid c)
     {
         Destroy(c.gameObject);
+        allBoids.Remove(c);
     }
 }

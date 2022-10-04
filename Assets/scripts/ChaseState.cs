@@ -49,8 +49,8 @@ public class ChaseState : IState
         {
             //destroy void
             var temp = _agent.getBoid();
-            _agent.selectBoid(null);
-            temp.Death(temp.gameObject);
+            //_agent.selectBoid(null);
+            temp.Death(temp);
             _fsm.ChangeState(AgentStates.Patrol);
         }
 
