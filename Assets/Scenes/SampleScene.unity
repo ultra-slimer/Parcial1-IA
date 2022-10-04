@@ -336,6 +336,7 @@ MonoBehaviour:
   boundHeight: 20
   boundWidth: 38.21
   foodPrefab: {fileID: 1997805489325109188, guid: 2e4bba51ad4f50547b6487b8bd676ec8, type: 3}
+  allfoods: []
   canSpawn: 0
   TimeSpawn: 5
 --- !u!4 &1857977250
@@ -517,6 +518,46 @@ PrefabInstance:
       propertyPath: evadeTarget
       value: 
       objectReference: {fileID: 450528733}
+    - target: {fileID: 3349605457330064741, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
+      propertyPath: Hunter
+      value: 
+      objectReference: {fileID: 450528732}
+    - target: {fileID: 3349605457330064741, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
+      propertyPath: evadeTarget
+      value: 
+      objectReference: {fileID: 450528733}
+    - target: {fileID: 3349605457988665383, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
+      propertyPath: Hunter
+      value: 
+      objectReference: {fileID: 450528732}
+    - target: {fileID: 3349605457988665383, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
+      propertyPath: evadeTarget
+      value: 
+      objectReference: {fileID: 450528733}
+    - target: {fileID: 3349605457989833593, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
+      propertyPath: Hunter
+      value: 
+      objectReference: {fileID: 450528732}
+    - target: {fileID: 3349605457989833593, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
+      propertyPath: evadeTarget
+      value: 
+      objectReference: {fileID: 450528733}
+    - target: {fileID: 3349605457997310262, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
+      propertyPath: Hunter
+      value: 
+      objectReference: {fileID: 450528732}
+    - target: {fileID: 3349605457997310262, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
+      propertyPath: evadeTarget
+      value: 
+      objectReference: {fileID: 450528733}
+    - target: {fileID: 3349605458158629489, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
+      propertyPath: Hunter
+      value: 
+      objectReference: {fileID: 450528732}
+    - target: {fileID: 3349605458158629489, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
+      propertyPath: evadeTarget
+      value: 
+      objectReference: {fileID: 450528733}
     - target: {fileID: 4267274056306256351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: Hunter
       value: 
@@ -591,7 +632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6675853086773998686, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6897124100171314351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: Hunter

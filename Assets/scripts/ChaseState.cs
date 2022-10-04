@@ -37,18 +37,17 @@ public class ChaseState : IState
         _agent.Move();
         _agent.CheckBounds();
         CheckClosestChase();
+        CheckIfInRange();
         Consume();
     }
 
-    private void Chase()
+    private void CheckIfInRange()
     {
         var dir = _boid.transform.position - _agent.transform.position;
-        _agent.transform.forward = dir;
 
-        _agent.transform.position += _agent.transform.forward * _agent.speed * Time.deltaTime;
-
-        if (dir.magnitude <= 0.3f)
+        if (dir.magnitude <= 0.5f)
         {
+            //destroy void
             var temp = _agent.getBoid();
             _agent.selectBoid(null);
             temp.Death(temp.gameObject);

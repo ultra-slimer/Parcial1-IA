@@ -238,6 +238,6 @@ public class Boid : MonoBehaviour
 
     public void Death(GameObject c)
     {
-        Destroy (c.gameObject);
+        Destroy(c.gameObject);
     }
 }
