@@ -25,8 +25,7 @@ public class Boid : MonoBehaviour
     public float arriveRadius;
     public bool arriving;
 
-    [Header("Evade")]
-    public bool evading;
+    [Header("Evade")]   
     public float evadeRadius;
     public Agent evadeTarget;
     public Transform Hunter;
@@ -40,7 +39,7 @@ public class Boid : MonoBehaviour
         Vector3 random = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
         AddForce(random.normalized * maxSpeed);
 
-        evading = true;
+       
     }
 
  
@@ -51,34 +50,39 @@ public class Boid : MonoBehaviour
         //AddForce(Cohesion() * cohesionWeight);
         //Esto se puede hacer en una linea de codigo ;)
 
-        if (Vector3.Distance(transform.position, GameManager.instance.foodPrefab.transform.position) <= viewRadius && arriving && GameManager.instance.foodPrefab != null)
+        foreach (var item in GameManager.instance.allfoods)
         {
-            
-            AddForce(Arrive(GameManager.instance.foodPrefab.transform.position));
+            if (Vector3.Distance(transform.position, item.transform.position) <= arriveRadius && item != null)
+            {
+               
+                Vector3 foodtarget = item.transform.position;
 
-            transform.position += _velocity * Time.deltaTime;
-            transform.forward = _velocity;
+                transform.position += _velocity * Time.deltaTime;
+                transform.forward = _velocity;
 
-            CheckBounds();
 
-            return;
+                AddForce(Arrive(foodtarget));
+
+               
+
+                CheckBounds();
+
+                return;
+            }
         }
 
+       
 
         if (Vector3.Distance(transform.position, Hunter.transform.position) <= evadeRadius)
         {
-            evading = true;
+          
             AddForce(-Evade());
         }
-        else evading = false;
+       
            
         
-
-        if (!evading)
-        {
-            AddForce(Separation() * separationWeight + Alignment() * alignmentWeight + Cohesion() * cohesionWeight);
-        }
-        //AddForce(Separation() * separationWeight + Alignment() * alignmentWeight + Cohesion() * cohesionWeight);
+       
+        AddForce(Separation() * separationWeight + Alignment() * alignmentWeight + Cohesion() * cohesionWeight);
 
         transform.position += _velocity * Time.deltaTime;
         transform.forward = _velocity;
@@ -148,6 +152,8 @@ public class Boid : MonoBehaviour
         return CalculateSteering(desired);
     }
 
+    
+
     Vector3 Arrive(Vector3 target)
     {
         Vector3 desired = target - transform.position;
@@ -156,26 +162,17 @@ public class Boid : MonoBehaviour
         desired.Normalize();
         desired *= speed;
 
-        if (desired.magnitude <= 0.3f)
-        {
-            //Destroy(GameManager.instance.foodPrefab);
-        }
 
+        foreach(GameObject item in GameManager.instance.allfoods)
+        {
+            if (desired.magnitude <= 0.3f)
+            {
+                Destroy(item);
+                GameManager.instance.allfoods.Remove(item);
+            }
 
-        /*
-        if (desired.magnitude <= arriveRadius)
-        {
-            float speed = maxSpeed * (desired.magnitude / arriveRadius);
-            desired.Normalize();
-            desired *= speed;
         }
-        else
-        {
-          
-            desired.Normalize();
-            desired *= maxSpeed;
-        }
-        */
+       
         return CalculateSteering(desired);
 
         /*

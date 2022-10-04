@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public float boundWidth = 18;
 
     public GameObject foodPrefab;
-    public static List<GameObject> allfoods = new List<GameObject>();
+    public List<GameObject> allfoods = new List<GameObject>();
     
 
     public static GameManager instance;
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
        
         if (foodPrefab != null)
         {
-            Spawn();
+            Spawn(foodPrefab);
             
         }  
        
@@ -68,15 +68,16 @@ public class GameManager : MonoBehaviour
         Gizmos.DrawLine(botLeft, topLeft);
     }
 
-    public void Spawn()
+    public void Spawn(GameObject newFood)
     {
         _time += Time.deltaTime;
         if (canSpawn)
         {
-            
+           
             Vector3 randowSpawn = new Vector3(Random.Range(boundWidth / 2, -boundWidth / 2), Random.Range(boundHeight / 2, -boundHeight / 2));
-            Instantiate(foodPrefab, randowSpawn, Quaternion.identity);
-            allfoods.Add(foodPrefab);
+            GameObject food = Instantiate(newFood, randowSpawn, Quaternion.identity);
+            
+            allfoods.Add(food);
 
             _time = 0;
             canSpawn = false;
