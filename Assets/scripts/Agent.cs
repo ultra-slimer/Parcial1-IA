@@ -27,7 +27,7 @@ public class Agent : MonoBehaviour
     public Transform[] allWaypoints;
     [Range(1.5f, 3)]
     public float range;
-    [Range(0.5f, 1)]
+    [Range(0.5f, 1.5f)]
     public float chaseChangeRange;
     private Boid chasedBoid;
 
