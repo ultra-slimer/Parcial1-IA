@@ -111,11 +111,11 @@ public class ChaseState : IState
         Vector3 futurePos = _boid.transform.position + _boid.GetVelocity() * Time.deltaTime;
 
         Vector3 desired = futurePos - _agent.transform.position;
-        //if (futurePos.magnitude >= desired.magnitude) //todo depende que es lo que necesiten
-        //  {
-        //    Debug.DrawLine(transform.position, _boid.transform.position, Color.red);
-        //    return Seek(_boid.transform.position);
-        //}
+        if (futurePos.magnitude >= desired.magnitude) //todo depende que es lo que necesiten
+          {
+            Debug.DrawLine(_agent.transform.position, _boid.transform.position, Color.red);
+           return _agent.Seek(_boid.transform.position);
+        }
         Debug.DrawLine(_agent.transform.position, futurePos, Color.white);
         desired.Normalize();
         desired *= _agent.speed;

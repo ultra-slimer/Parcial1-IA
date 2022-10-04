@@ -144,4 +144,15 @@ public class Agent : MonoBehaviour
     {
         transform.position = GameManager.instance.SetObjectBoundPosition(transform.position);
     }
+
+    public Vector3 Seek(Vector3 target)
+    {
+        Vector3 desired = target - transform.position;
+        desired.Normalize();
+        desired *= speed;
+        Vector3 steering = desired - GetVelocity();
+        steering = Vector3.ClampMagnitude(steering, maxForce);
+
+        return steering;
+    }
 }
