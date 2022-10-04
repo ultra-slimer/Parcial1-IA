@@ -189,7 +189,7 @@ public class Boid : MonoBehaviour
     Vector3 Evade()
     {
 
-        Vector3 futurePos = evadeTarget.transform.position + evadeTarget.velocity;
+        Vector3 futurePos = evadeTarget.transform.position + evadeTarget.velocity * Time.deltaTime;
 
         Vector3 desired = futurePos - transform.position;
        
@@ -244,6 +244,6 @@ public class Boid : MonoBehaviour
 
     public void Death(GameObject c)
     {
-        
+        Destroy (c.gameObject);
     }
 }
