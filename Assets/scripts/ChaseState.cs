@@ -108,7 +108,7 @@ public class ChaseState : IState
     Vector3 Pursuit()
     {
         //pos + velocity * Time
-        Vector3 futurePos = _boid.transform.position + _boid.GetVelocity(); //* Time.deltaTime;
+        Vector3 futurePos = _boid.transform.position + _boid.GetVelocity() * Time.deltaTime;
 
         Vector3 desired = futurePos - _agent.transform.position;
         //if (futurePos.magnitude >= desired.magnitude) //todo depende que es lo que necesiten
