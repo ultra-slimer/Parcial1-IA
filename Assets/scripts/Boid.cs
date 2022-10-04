@@ -25,6 +25,12 @@ public class Boid : MonoBehaviour
     public float arriveRadius;
     public bool arriving;
 
+    [Header("Evade")]
+    public bool evading;
+    public float evadeRadius;
+    public Agent evadeTarget;
+    public Transform Hunter;
+
 
    
     void Start()
@@ -33,6 +39,8 @@ public class Boid : MonoBehaviour
 
         Vector3 random = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
         AddForce(random.normalized * maxSpeed);
+
+        evading = true;
     }
 
  
@@ -56,7 +64,21 @@ public class Boid : MonoBehaviour
             return;
         }
 
-        AddForce(Separation() * separationWeight + Alignment() * alignmentWeight + Cohesion() * cohesionWeight);
+
+        if (Vector3.Distance(transform.position, Hunter.transform.position) <= evadeRadius)
+        {
+            evading = true;
+            AddForce(-Evade());
+        }
+        else evading = false;
+           
+        
+
+        if (!evading)
+        {
+            AddForce(Separation() * separationWeight + Alignment() * alignmentWeight + Cohesion() * cohesionWeight);
+        }
+        //AddForce(Separation() * separationWeight + Alignment() * alignmentWeight + Cohesion() * cohesionWeight);
 
         transform.position += _velocity * Time.deltaTime;
         transform.forward = _velocity;
@@ -134,7 +156,7 @@ public class Boid : MonoBehaviour
         desired.Normalize();
         desired *= speed;
 
-        if (speed == 0)
+        if (desired.magnitude <= 0.3f)
         {
             //Destroy(GameManager.instance.foodPrefab);
         }
@@ -149,17 +171,39 @@ public class Boid : MonoBehaviour
         }
         else
         {
-            //return Seek(target);
+          
             desired.Normalize();
             desired *= maxSpeed;
         }
         */
-        
-        
+        return CalculateSteering(desired);
+
+        /*
         Vector3 steering = desired - _velocity;
         steering = Vector3.ClampMagnitude(steering, maxForce);
 
         return steering;
+        */
+    }
+
+    Vector3 Evade()
+    {
+
+        Vector3 futurePos = evadeTarget.transform.position + evadeTarget.velocity;
+
+        Vector3 desired = futurePos - transform.position;
+       
+       
+        Debug.DrawLine(transform.position, futurePos, Color.white);
+        desired.Normalize();
+        desired *= maxSpeed;
+        
+       
+     
+       
+
+        return CalculateSteering(desired);   
+        
     }
 
     Vector3 CalculateSteering(Vector3 desired)
@@ -187,6 +231,10 @@ public class Boid : MonoBehaviour
         //arrive
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, arriveRadius);
+
+        //Evade
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, evadeRadius);
 
     }
     public Vector3 GetVelocity()

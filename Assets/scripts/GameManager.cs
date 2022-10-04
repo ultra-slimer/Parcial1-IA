@@ -12,25 +12,29 @@ public class GameManager : MonoBehaviour
     
 
     public static GameManager instance;
+
     public bool canSpawn;
     public float TimeSpawn;
+    float _time;
 
    
     private void Awake()
     {
         if (instance == null) instance = this;
         else Destroy(gameObject);
+
+        canSpawn = true;
     }
 
     public void Update()
     {
-
-        if (canSpawn && foodPrefab != null)
+       
+        if (foodPrefab != null)
         {
-            StartCoroutine(SpawnerTime());
-           
+            Spawn();
+            
         }  
-        else StopCoroutine(SpawnerTime());
+       
 
       
     }
@@ -66,11 +70,25 @@ public class GameManager : MonoBehaviour
 
     public void Spawn()
     {
-        GameObject newfood = new GameObject("foodPrefab");
-        Vector3 randowSpawn = new Vector3(Random.Range(boundWidth / 2, -boundWidth / 2), Random.Range(boundHeight / 2, -boundHeight / 2));
-        Instantiate(newfood, randowSpawn, Quaternion.identity);
-        allfoods.Add(newfood);
-        //Debug.Log("creando");
+        _time += Time.deltaTime;
+        if (canSpawn)
+        {
+            
+            Vector3 randowSpawn = new Vector3(Random.Range(boundWidth / 2, -boundWidth / 2), Random.Range(boundHeight / 2, -boundHeight / 2));
+            Instantiate(foodPrefab, randowSpawn, Quaternion.identity);
+            allfoods.Add(foodPrefab);
+
+            _time = 0;
+            canSpawn = false;
+            
+            Debug.Log("creando");
+        }
+        else if (_time >= TimeSpawn)
+        {
+            canSpawn = true;
+        }
+        
+        
     }
 
     public void DestroyFood(GameObject food)
@@ -81,18 +99,23 @@ public class GameManager : MonoBehaviour
 
     
 
+    /* No se pudo :(
     IEnumerator SpawnerTime()
     {
-        yield return new WaitForSeconds(TimeSpawn);
-        Debug.Log("creando");
+        
         Spawn();
+        canSpawn = false;
         yield return new WaitForSeconds(TimeSpawn);
-        /*
+        canSpawn = true;
+
+
+        
         Vector3 randowSpawn = new Vector3(Random.Range(boundWidth / 2, -boundWidth / 2), Random.Range(boundHeight / 2, -boundHeight / 2));
         Instantiate(foodPrefab, randowSpawn, Quaternion.identity);      
         Debug.Log("creando");
-        */
+        
 
-       
+
     }
+    */
 }

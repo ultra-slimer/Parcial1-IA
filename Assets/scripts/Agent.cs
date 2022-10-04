@@ -31,6 +31,8 @@ public class Agent : MonoBehaviour
     public float chaseChangeRange;
     private Boid chasedBoid;
 
+    public Vector3 velocity { get { return _velocity; } }
+
     // Start is called before the first frame update
     void Start()
     {
