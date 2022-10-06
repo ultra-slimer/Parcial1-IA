@@ -204,17 +204,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ffb45aad2d31749bf2e841d41b528e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 6
+  maxSpeed: 7
   maxForce: 0.028
   viewRadius: 3
-  separationRadius: 1
-  separationWeight: 1.2
+  separationRadius: 1.51
+  separationWeight: 1.34
   cohesionWeight: 1.51
-  alignmentWeight: 1.51
+  alignmentWeight: 1.64
   target: {fileID: 3727068811834156824, guid: 2e4bba51ad4f50547b6487b8bd676ec8, type: 3}
   gameTarget: {fileID: 0}
-  arriveRadius: 3
+  arriveRadius: 4.46
   arriving: 1
-  evadeRadius: 3
+  evadeRadius: 2.5
   evadeTarget: {fileID: 0}
   Hunter: {fileID: 0}

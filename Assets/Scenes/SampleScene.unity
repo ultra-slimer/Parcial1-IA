@@ -418,7 +418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 635058607010060891, guid: f127a80e85b834d48b9a84f18dd3fa59, type: 3}
       propertyPath: evadeRadius
-      value: 4.49
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 635058607010060891, guid: f127a80e85b834d48b9a84f18dd3fa59, type: 3}
       propertyPath: evadeTarget
@@ -426,7 +426,7 @@ PrefabInstance:
       objectReference: {fileID: 450528733}
     - target: {fileID: 635058607010060891, guid: f127a80e85b834d48b9a84f18dd3fa59, type: 3}
       propertyPath: arriveRadius
-      value: 2
+      value: 4.46
       objectReference: {fileID: 0}
     - target: {fileID: 635058607010060891, guid: f127a80e85b834d48b9a84f18dd3fa59, type: 3}
       propertyPath: alignmentWeight
@@ -502,6 +502,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7483619992317440546, guid: 5cbbf294f21cc5a499246dbff4cbebf8, type: 3}
+      propertyPath: range
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7483619992317440546, guid: 5cbbf294f21cc5a499246dbff4cbebf8, type: 3}
       propertyPath: speed
       value: 6
       objectReference: {fileID: 0}
@@ -564,7 +568,7 @@ PrefabInstance:
       objectReference: {fileID: 450528732}
     - target: {fileID: 3349605457330064741, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeRadius
-      value: 4.49
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457330064741, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeTarget
@@ -600,7 +604,7 @@ PrefabInstance:
       objectReference: {fileID: 450528732}
     - target: {fileID: 3349605457988665383, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeRadius
-      value: 4.49
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457988665383, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeTarget
@@ -660,7 +664,7 @@ PrefabInstance:
       objectReference: {fileID: 450528732}
     - target: {fileID: 3349605457997310262, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeRadius
-      value: 4.49
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457997310262, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeTarget
@@ -696,7 +700,7 @@ PrefabInstance:
       objectReference: {fileID: 450528732}
     - target: {fileID: 3349605458158629489, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeRadius
-      value: 4.49
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3349605458158629489, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeTarget
@@ -740,7 +744,7 @@ PrefabInstance:
       objectReference: {fileID: 450528732}
     - target: {fileID: 4267274056306256351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeRadius
-      value: 4.49
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4267274056306256351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeTarget
@@ -776,7 +780,7 @@ PrefabInstance:
       objectReference: {fileID: 450528732}
     - target: {fileID: 5736485921884231227, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeRadius
-      value: 4.49
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 5736485921884231227, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeTarget
@@ -800,7 +804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5767057035834968583, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5767057035834968583, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -856,7 +860,7 @@ PrefabInstance:
       objectReference: {fileID: 450528732}
     - target: {fileID: 6355520628487787419, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeRadius
-      value: 4.49
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6355520628487787419, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeTarget
@@ -900,7 +904,7 @@ PrefabInstance:
       objectReference: {fileID: 450528732}
     - target: {fileID: 6897124100171314351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeRadius
-      value: 4.49
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6897124100171314351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeTarget
@@ -928,7 +932,7 @@ PrefabInstance:
       objectReference: {fileID: 450528732}
     - target: {fileID: 9061922835827002720, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeRadius
-      value: 4.49
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 9061922835827002720, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeTarget
@@ -973,7 +977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3766760210729367404, guid: 364ed79e988bf934abaf051193a2583a, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3766760210729367404, guid: 364ed79e988bf934abaf051193a2583a, type: 3}
       propertyPath: m_LocalPosition.x

@@ -54,7 +54,7 @@ public class Boid : MonoBehaviour
 
         foreach (var item in GameManager.instance.allfoods)
         {
-            if (Vector3.Distance(transform.position, item.transform.position) <= arriveRadius && _evading && item != null)
+            if (Vector3.Distance(transform.position, item.transform.position) <= arriveRadius && !_evading)
             {
                
                 Vector3 foodtarget = item.transform.position;
@@ -63,14 +63,14 @@ public class Boid : MonoBehaviour
                 transform.position += _velocity * Time.deltaTime;
                 transform.forward = _velocity;
 
-
+                
                 AddForce(Arrive(foodtarget));
 
                
 
                 CheckBounds();
 
-                //return;
+                return;
             }
         }
 
@@ -187,9 +187,9 @@ public class Boid : MonoBehaviour
 
         Vector3 futurePos = evadeTarget.transform.position + evadeTarget.velocity / Time.deltaTime;
 
-        Vector3 desired = futurePos + transform.position;
+        Vector3 desired = futurePos - transform.position;
 
-        Debug.Log("esquivar");
+        //Debug.Log("esquivar");
         Debug.DrawLine(transform.position, futurePos, Color.white);
         desired.Normalize();
         desired *= maxSpeed;
