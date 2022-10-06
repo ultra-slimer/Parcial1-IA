@@ -75,10 +75,10 @@ public class Boid : MonoBehaviour
 
        
 
-        if (Vector3.Distance(transform.position, Hunter.transform.position) <= evadeRadius)
+        if (Vector3.Distance(transform.position, evadeTarget.transform.position) <= evadeRadius)
         {
           
-            AddForce(-Evade());
+            AddForce(Evade());
         }
        
            
@@ -183,11 +183,11 @@ public class Boid : MonoBehaviour
     Vector3 Evade()
     {
 
-        Vector3 futurePos = evadeTarget.transform.position + evadeTarget.velocity * Time.deltaTime;
+        Vector3 futurePos = evadeTarget.transform.position - evadeTarget.velocity * Time.deltaTime;
 
-        Vector3 desired = futurePos - transform.position;
-       
-       
+        Vector3 desired = futurePos + transform.position;
+
+        Debug.Log("esquivar");
         Debug.DrawLine(transform.position, futurePos, Color.white);
         desired.Normalize();
         desired *= maxSpeed;
