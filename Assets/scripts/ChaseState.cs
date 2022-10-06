@@ -51,7 +51,8 @@ public class ChaseState : IState
             var temp = _agent.getBoid();
             //_agent.selectBoid(null);
             temp.Death(temp);
-            _fsm.ChangeState(AgentStates.Patrol);
+            _agent.ConsumeEnergy(_agent.maxEnergy);
+            _fsm.ChangeState(AgentStates.Idle);
         }
 
         if(Vector3.Distance(_agent.transform.position, _boid.transform.position) > _agent.range)

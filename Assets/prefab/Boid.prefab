@@ -208,12 +208,12 @@ MonoBehaviour:
   maxForce: 0.028
   viewRadius: 3
   separationRadius: 1
-  separationWeight: 0.8
+  separationWeight: 1.2
   cohesionWeight: 1.51
   alignmentWeight: 1.51
   target: {fileID: 3727068811834156824, guid: 2e4bba51ad4f50547b6487b8bd676ec8, type: 3}
   gameTarget: {fileID: 0}
-  arriveRadius: 1.8
+  arriveRadius: 3
   arriving: 1
   evadeRadius: 3
   evadeTarget: {fileID: 0}
