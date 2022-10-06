@@ -28,6 +28,7 @@ public class Boid : MonoBehaviour
 
     [Header("Evade")]   
     public float evadeRadius;
+    bool _evading;
     public Agent evadeTarget;
     public Transform Hunter;
 
@@ -53,7 +54,7 @@ public class Boid : MonoBehaviour
 
         foreach (var item in GameManager.instance.allfoods)
         {
-            if (Vector3.Distance(transform.position, item.transform.position) <= arriveRadius && item != null)
+            if (Vector3.Distance(transform.position, item.transform.position) <= arriveRadius && _evading && item != null)
             {
                
                 Vector3 foodtarget = item.transform.position;
@@ -69,7 +70,7 @@ public class Boid : MonoBehaviour
 
                 CheckBounds();
 
-                return;
+                //return;
             }
         }
 
@@ -77,9 +78,10 @@ public class Boid : MonoBehaviour
 
         if (Vector3.Distance(transform.position, evadeTarget.transform.position) <= evadeRadius)
         {
-          
-            AddForce(Evade());
+            _evading = true;
+            AddForce(-Evade());
         }
+        else _evading = false;
        
            
         
@@ -183,7 +185,7 @@ public class Boid : MonoBehaviour
     Vector3 Evade()
     {
 
-        Vector3 futurePos = evadeTarget.transform.position - evadeTarget.velocity * Time.deltaTime;
+        Vector3 futurePos = evadeTarget.transform.position + evadeTarget.velocity / Time.deltaTime;
 
         Vector3 desired = futurePos + transform.position;
 
