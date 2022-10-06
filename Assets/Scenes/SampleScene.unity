@@ -238,6 +238,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Food
       objectReference: {fileID: 0}
+    - target: {fileID: 1997805489325109188, guid: 2e4bba51ad4f50547b6487b8bd676ec8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3727068811834156824, guid: 2e4bba51ad4f50547b6487b8bd676ec8, type: 3}
       propertyPath: m_RootOrder
       value: 1
