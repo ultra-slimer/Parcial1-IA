@@ -15,15 +15,21 @@ public class Boid : MonoBehaviour
     public static List<Boid> allBoids = new List<Boid>();
     [Range(0f, 2.5f)]
     public float separationWeight = 1;
+    private float _separationWeight;
     [Range(0f, 2.5f)]
     public float cohesionWeight = 1;
+    private float _cohesionWeight;
     [Range(0f, 2.5f)]
     public float alignmentWeight = 1;
+    private float _alignmentWeight;
 
     [Header("Arrive")]
     public Transform target;
     public GameObject gameTarget;
     public float arriveRadius;
+    [Range(0f, 2.5f)]
+    public float arriveWeight;
+    private float _arriveWeight;
     public bool arriving;
 
     [Header("Evade")]   
@@ -31,9 +37,12 @@ public class Boid : MonoBehaviour
     bool _evading;
     public Agent evadeTarget;
     public Transform Hunter;
+    [Range(0f, 2.5f)]
+    public float evadeWeight;
+    private float _evadeWeight;
 
 
-   
+
     void Start()
     {
         allBoids.Add(this);
@@ -44,49 +53,47 @@ public class Boid : MonoBehaviour
        
     }
 
- 
+
     void Update()
     {
         //AddForce(Separation() * separationWeight);
         //AddForce(Alignment() * alignamentWeight);
         //AddForce(Cohesion() * cohesionWeight);
         //Esto se puede hacer en una linea de codigo ;)
-
-        foreach (var item in GameManager.instance.allfoods)
+        var evade = -Evade() * _evadeWeight;
+        var arrive = Arrive() * _arriveWeight;
+        /*if (evade != Vector3.zero)
         {
-            if (Vector3.Distance(transform.position, item.transform.position) <= arriveRadius && !_evading)
+            AddForce(evade);
+        }
+        if (arrive != Vector3.zero)
+        {
+            AddForce(arrive);
+        }*/
+        if (evade != Vector3.zero || arrive != Vector3.zero)
+        {
+            _alignmentWeight = 0;
+            _cohesionWeight = 0;
+            _separationWeight = 0;
+            if(evade != Vector3.zero)
             {
-               
-                Vector3 foodtarget = item.transform.position;
-                gameTarget = item;
-
-                transform.position += _velocity * Time.deltaTime;
-                transform.forward = _velocity;
-
-                
-                AddForce(Arrive(foodtarget));
-
-               
-
-                CheckBounds();
-
-                return;
+                AddForce(evade);
+            }
+            if (arrive != Vector3.zero)
+            {
+                AddForce(arrive);
             }
         }
-
-       
-
-        if (Vector3.Distance(transform.position, evadeTarget.transform.position) <= evadeRadius)
+        else
         {
-            _evading = true;
-            AddForce(-Evade());
+            _alignmentWeight = alignmentWeight;
+            _cohesionWeight = cohesionWeight;
+            _separationWeight = separationWeight;
         }
-        else _evading = false;
-       
-           
-        
-       
-        AddForce(Separation() * separationWeight + Alignment() * alignmentWeight + Cohesion() * cohesionWeight);
+
+
+
+        AddForce(Separation() * _separationWeight + Alignment() * _alignmentWeight + Cohesion() * _cohesionWeight);
 
         transform.position += _velocity * Time.deltaTime;
         transform.forward = _velocity;
@@ -158,22 +165,51 @@ public class Boid : MonoBehaviour
 
     
 
-    Vector3 Arrive(Vector3 target)
+    Vector3 Arrive()
     {
-        Vector3 desired = target - transform.position;
-
-        float speed = maxSpeed * (desired.magnitude / arriveRadius);
-        desired.Normalize();
-        desired *= speed;
-
-
-        if (desired.magnitude <= 0.3f)
+        foreach (var item in GameManager.instance.allfoods)
         {
-            GameManager.instance.DestroyFood(gameTarget);
-        }
-       
-        return CalculateSteering(desired);
+            if (Vector3.Distance(transform.position, item.transform.position) <= arriveRadius && item != null)
+            {
 
+                target = item.transform;
+                gameTarget = item;
+                _arriveWeight = arriveWeight;
+                /*
+                                transform.position += _velocity * Time.deltaTime;
+                                transform.forward = _velocity;
+
+
+                                AddForce(Arrive(target.position));
+
+                               */
+
+                CheckBounds();
+
+                break;
+            }
+        }
+        if (target == null)
+        {
+            _arriveWeight = 0;
+            return Vector3.zero;
+        }
+        else
+        {
+            Vector3 desired = target.position - transform.position;
+
+            float speed = maxSpeed * (desired.magnitude / arriveRadius);
+            desired.Normalize();
+            desired *= speed;
+
+
+            if (desired.magnitude <= 0.3f)
+            {
+                GameManager.instance.DestroyFood(gameTarget);
+            }
+
+            return CalculateSteering(desired);
+        }
         /*
         Vector3 steering = desired - _velocity;
         steering = Vector3.ClampMagnitude(steering, maxForce);
@@ -184,21 +220,30 @@ public class Boid : MonoBehaviour
 
     Vector3 Evade()
     {
+        if (Vector3.Distance(transform.position, Hunter.transform.position) <= evadeRadius)
+        {
+            _evadeWeight = evadeWeight;
+            Vector3 futurePos = evadeTarget.transform.position + evadeTarget.velocity * Time.deltaTime;
 
-        Vector3 futurePos = evadeTarget.transform.position + evadeTarget.velocity / Time.deltaTime;
+            Vector3 desired = futurePos - transform.position;
 
-        Vector3 desired = futurePos - transform.position;
-
-        //Debug.Log("esquivar");
-        Debug.DrawLine(transform.position, futurePos, Color.white);
-        desired.Normalize();
-        desired *= maxSpeed;
+            //Debug.Log("esquivar");
+            Debug.DrawLine(transform.position, futurePos, Color.white);
+            desired.Normalize();
+            desired *= maxSpeed;
         
        
      
        
 
-        return CalculateSteering(desired);   
+            return CalculateSteering(desired);  
+        }
+        else
+        {
+            _evadeWeight = 0;
+            return Vector3.zero;
+        }
+             
         
     }
 
