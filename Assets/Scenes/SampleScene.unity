@@ -418,7 +418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 635058607010060891, guid: f127a80e85b834d48b9a84f18dd3fa59, type: 3}
       propertyPath: evadeRadius
-      value: 2.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 635058607010060891, guid: f127a80e85b834d48b9a84f18dd3fa59, type: 3}
       propertyPath: evadeTarget
@@ -430,27 +430,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 635058607010060891, guid: f127a80e85b834d48b9a84f18dd3fa59, type: 3}
       propertyPath: arriveRadius
-      value: 2
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 635058607010060891, guid: f127a80e85b834d48b9a84f18dd3fa59, type: 3}
       propertyPath: arriveWeight
-      value: 2.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 635058607010060891, guid: f127a80e85b834d48b9a84f18dd3fa59, type: 3}
-      propertyPath: cohesionWeight
-      value: 1.43
+      value: 2.01
       objectReference: {fileID: 0}
     - target: {fileID: 635058607010060891, guid: f127a80e85b834d48b9a84f18dd3fa59, type: 3}
       propertyPath: alignmentWeight
-      value: 1.73
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 635058607010060891, guid: f127a80e85b834d48b9a84f18dd3fa59, type: 3}
       propertyPath: separationRadius
-      value: 2
+      value: 1.51
       objectReference: {fileID: 0}
     - target: {fileID: 635058607010060891, guid: f127a80e85b834d48b9a84f18dd3fa59, type: 3}
       propertyPath: separationWeight
-      value: 1.35
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 635058607010060892, guid: f127a80e85b834d48b9a84f18dd3fa59, type: 3}
       propertyPath: m_Name
@@ -555,6 +551,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 450528732}
     - target: {fileID: 3182462109683744103, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
+      propertyPath: evadeRadius
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182462109683744103, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeTarget
       value: 
       objectReference: {fileID: 450528733}
@@ -564,27 +564,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3182462109683744103, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveRadius
-      value: 2
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 3182462109683744103, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveWeight
-      value: 2.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 3182462109683744103, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
-      propertyPath: cohesionWeight
-      value: 1.43
+      value: 2.01
       objectReference: {fileID: 0}
     - target: {fileID: 3182462109683744103, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: alignmentWeight
-      value: 1.73
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 3182462109683744103, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationRadius
-      value: 2
+      value: 1.51
       objectReference: {fileID: 0}
     - target: {fileID: 3182462109683744103, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationWeight
-      value: 1.35
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3182462109683744107, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -600,7 +596,7 @@ PrefabInstance:
       objectReference: {fileID: 450528732}
     - target: {fileID: 3349605457330064741, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeRadius
-      value: 2.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457330064741, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeTarget
@@ -612,27 +608,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457330064741, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveRadius
-      value: 2
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457330064741, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveWeight
-      value: 2.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 3349605457330064741, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
-      propertyPath: cohesionWeight
-      value: 1.43
+      value: 2.01
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457330064741, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: alignmentWeight
-      value: 1.73
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457330064741, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationRadius
-      value: 2
+      value: 1.51
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457330064741, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationWeight
-      value: 1.35
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457330064745, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -648,7 +640,7 @@ PrefabInstance:
       objectReference: {fileID: 450528732}
     - target: {fileID: 3349605457988665383, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeRadius
-      value: 2.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457988665383, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeTarget
@@ -660,27 +652,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457988665383, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveRadius
-      value: 2
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457988665383, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveWeight
-      value: 2.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 3349605457988665383, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
-      propertyPath: cohesionWeight
-      value: 1.43
+      value: 2.01
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457988665383, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: alignmentWeight
-      value: 1.73
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457988665383, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationRadius
-      value: 2
+      value: 1.51
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457988665383, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationWeight
-      value: 1.35
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457988665387, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -703,6 +691,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 450528732}
     - target: {fileID: 3349605457989833593, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
+      propertyPath: evadeRadius
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3349605457989833593, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeTarget
       value: 
       objectReference: {fileID: 450528733}
@@ -712,27 +704,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457989833593, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveRadius
-      value: 2
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457989833593, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveWeight
-      value: 2.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 3349605457989833593, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
-      propertyPath: cohesionWeight
-      value: 1.43
+      value: 2.01
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457989833593, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: alignmentWeight
-      value: 1.73
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457989833593, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationRadius
-      value: 2
+      value: 1.51
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457989833593, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationWeight
-      value: 1.35
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457997310262, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: Hunter
@@ -740,7 +728,7 @@ PrefabInstance:
       objectReference: {fileID: 450528732}
     - target: {fileID: 3349605457997310262, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeRadius
-      value: 2.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457997310262, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeTarget
@@ -752,27 +740,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457997310262, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveRadius
-      value: 2
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457997310262, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveWeight
-      value: 2.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 3349605457997310262, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
-      propertyPath: cohesionWeight
-      value: 1.43
+      value: 2.01
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457997310262, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: alignmentWeight
-      value: 1.73
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457997310262, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationRadius
-      value: 2
+      value: 1.51
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457997310262, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationWeight
-      value: 1.35
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3349605457997310266, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -788,7 +772,7 @@ PrefabInstance:
       objectReference: {fileID: 450528732}
     - target: {fileID: 3349605458158629489, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeRadius
-      value: 2.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3349605458158629489, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeTarget
@@ -800,27 +784,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3349605458158629489, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveRadius
-      value: 2
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 3349605458158629489, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveWeight
-      value: 2.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 3349605458158629489, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
-      propertyPath: cohesionWeight
-      value: 1.43
+      value: 2.01
       objectReference: {fileID: 0}
     - target: {fileID: 3349605458158629489, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: alignmentWeight
-      value: 1.73
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 3349605458158629489, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationRadius
-      value: 2
+      value: 1.51
       objectReference: {fileID: 0}
     - target: {fileID: 3349605458158629489, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationWeight
-      value: 1.35
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3349605458158629501, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -844,7 +824,7 @@ PrefabInstance:
       objectReference: {fileID: 450528732}
     - target: {fileID: 4267274056306256351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeRadius
-      value: 2.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4267274056306256351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeTarget
@@ -856,27 +836,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4267274056306256351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveRadius
-      value: 2
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 4267274056306256351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveWeight
-      value: 2.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 4267274056306256351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
-      propertyPath: cohesionWeight
-      value: 1.43
+      value: 2.01
       objectReference: {fileID: 0}
     - target: {fileID: 4267274056306256351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: alignmentWeight
-      value: 1.73
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 4267274056306256351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationRadius
-      value: 2
+      value: 1.51
       objectReference: {fileID: 0}
     - target: {fileID: 4267274056306256351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationWeight
-      value: 1.35
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 5736485921884231223, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -892,7 +868,7 @@ PrefabInstance:
       objectReference: {fileID: 450528732}
     - target: {fileID: 5736485921884231227, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeRadius
-      value: 2.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5736485921884231227, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeTarget
@@ -904,27 +880,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5736485921884231227, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveRadius
-      value: 2
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 5736485921884231227, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveWeight
-      value: 2.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 5736485921884231227, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
-      propertyPath: cohesionWeight
-      value: 1.43
+      value: 2.01
       objectReference: {fileID: 0}
     - target: {fileID: 5736485921884231227, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: alignmentWeight
-      value: 1.73
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 5736485921884231227, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationRadius
-      value: 2
+      value: 1.51
       objectReference: {fileID: 0}
     - target: {fileID: 5736485921884231227, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationWeight
-      value: 1.35
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 5767057035834968583, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: m_RootOrder
@@ -984,7 +956,7 @@ PrefabInstance:
       objectReference: {fileID: 450528732}
     - target: {fileID: 6355520628487787419, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeRadius
-      value: 2.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6355520628487787419, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeTarget
@@ -996,27 +968,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6355520628487787419, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveRadius
-      value: 2
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 6355520628487787419, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveWeight
-      value: 2.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 6355520628487787419, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
-      propertyPath: cohesionWeight
-      value: 1.43
+      value: 2.01
       objectReference: {fileID: 0}
     - target: {fileID: 6355520628487787419, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: alignmentWeight
-      value: 1.73
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 6355520628487787419, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationRadius
-      value: 2
+      value: 1.51
       objectReference: {fileID: 0}
     - target: {fileID: 6355520628487787419, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationWeight
-      value: 1.35
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 6675853086773998686, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: m_Name
@@ -1040,7 +1008,7 @@ PrefabInstance:
       objectReference: {fileID: 450528732}
     - target: {fileID: 6897124100171314351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeRadius
-      value: 2.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6897124100171314351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeTarget
@@ -1052,27 +1020,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6897124100171314351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveRadius
-      value: 2
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 6897124100171314351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveWeight
-      value: 2.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 6897124100171314351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
-      propertyPath: cohesionWeight
-      value: 1.43
+      value: 2.01
       objectReference: {fileID: 0}
     - target: {fileID: 6897124100171314351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: alignmentWeight
-      value: 1.73
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 6897124100171314351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationRadius
-      value: 2
+      value: 1.51
       objectReference: {fileID: 0}
     - target: {fileID: 6897124100171314351, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationWeight
-      value: 1.35
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 9061922835827002720, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: Hunter
@@ -1080,7 +1044,7 @@ PrefabInstance:
       objectReference: {fileID: 450528732}
     - target: {fileID: 9061922835827002720, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeRadius
-      value: 2.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9061922835827002720, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: evadeTarget
@@ -1092,27 +1056,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9061922835827002720, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveRadius
-      value: 2
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 9061922835827002720, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: arriveWeight
-      value: 2.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 9061922835827002720, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
-      propertyPath: cohesionWeight
-      value: 1.43
+      value: 2.01
       objectReference: {fileID: 0}
     - target: {fileID: 9061922835827002720, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: alignmentWeight
-      value: 1.73
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 9061922835827002720, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationRadius
-      value: 2
+      value: 1.51
       objectReference: {fileID: 0}
     - target: {fileID: 9061922835827002720, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: separationWeight
-      value: 1.35
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 9061922835827002732, guid: 434f76b2ff1ec73439771be6a12607eb, type: 3}
       propertyPath: m_LocalPosition.x
