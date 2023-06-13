@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Boid : MonoBehaviour
 {
@@ -105,8 +106,12 @@ public class Boid : MonoBehaviour
     {
         Vector3 desired = Vector3.zero;
 
+        desired = allBoids.Where(boid => (boid.transform.position - transform.position).magnitude <= viewRadius).Aggregate(desired,(curent, boids) => curent + (boids.transform.position - transform.position));
+
+        /* anterior
         foreach (Boid boid in allBoids)
         {
+
             if (boid == this) continue;
 
             Vector3 dist = boid.transform.position - transform.position;
@@ -115,7 +120,9 @@ public class Boid : MonoBehaviour
                 desired += dist;
             }
         }
+        */
         if (desired == Vector3.zero) return desired;
+        
 
         desired *= -1;
 
@@ -125,6 +132,9 @@ public class Boid : MonoBehaviour
     Vector3 Alignment()
     {
         Vector3 desired = Vector3.zero;
+
+        desired = allBoids.Where(boids => Vector3.Distance(transform.position, boids.transform.position) <= viewRadius).Select(boids => boids.GetVelocity()).Aggregate(desired, (current, boids) => current + boids);
+        /* anterior
         int count = 0;
         foreach (var item in allBoids)
         {
@@ -137,6 +147,11 @@ public class Boid : MonoBehaviour
         }
         if (count == 0) return desired;
         desired /= count;
+        */
+
+        if (desired == Vector3.zero) return desired;
+   
+        desired /= allBoids.Count;
 
         return CalculateSteering(desired);
     }
@@ -144,6 +159,10 @@ public class Boid : MonoBehaviour
     Vector3 Cohesion()
     {
         Vector3 desired = Vector3.zero;
+
+        desired = allBoids.Where(boids => Vector3.Distance(transform.position, boids.transform.position) <= viewRadius).Select(bois => bois.transform.position).Aggregate(desired, (current, boids) => current + boids);
+
+        /*
         int count = 0;
         foreach (var item in allBoids)
         {
@@ -154,9 +173,9 @@ public class Boid : MonoBehaviour
                 desired += item.transform.position;
                 count++;
             }
-        }
+        }       
         if (count == 0) return desired;
-        desired /= count;
+        */
        
         desired -= transform.position;
 
