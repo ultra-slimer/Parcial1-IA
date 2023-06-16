@@ -181,6 +181,7 @@ public class newAgent : MonoBehaviour
             */
 
             //nuevo
+            //var boidGet = Boid.allBoids.Where().OrderBy().Take();
             foreach (var boids in Boid.allBoids.Where(a => Vector3.Distance(transform.position, a.transform.position) <= range).OrderBy(a => Vector3.Distance(transform.position, a.transform.position)))
             {
                 boisCloseEnough.Add(boids);
