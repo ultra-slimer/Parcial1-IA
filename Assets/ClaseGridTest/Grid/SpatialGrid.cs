@@ -10,7 +10,8 @@ public class SpatialGrid : MonoBehaviour
     //punto de inicio de la grilla en X
     public float x;
     //punto de inicio de la grilla en Z
-    public float z;
+    public float y;
+    //public float z;
     //ancho de las celdas
     public float cellWidth;
     //alto de las celdas
@@ -85,15 +86,19 @@ public class SpatialGrid : MonoBehaviour
 
     public IEnumerable<GridEntity> Query(Vector3 aabbFrom, Vector3 aabbTo, Func<Vector3, bool> filterByPosition)
     {
-        var from = new Vector3(Mathf.Min(aabbFrom.x, aabbTo.x), 0, Mathf.Min(aabbFrom.z, aabbTo.z));
-        var to = new Vector3(Mathf.Max(aabbFrom.x, aabbTo.x), 0, Mathf.Max(aabbFrom.z, aabbTo.z));
+        var from = new Vector3(Mathf.Min(aabbFrom.x, aabbTo.x), Mathf.Min(aabbFrom.y, aabbTo.y), 0);
+        //var from = new Vector3(Mathf.Min(aabbFrom.x, aabbTo.x), 0, Mathf.Min(aabbFrom.z, aabbTo.z));
+        var to = new Vector3(Mathf.Max(aabbFrom.x, aabbTo.x), Mathf.Max(aabbFrom.y, aabbTo.y), 0);
+        //var to = new Vector3(Mathf.Max(aabbFrom.x, aabbTo.x), 0, Mathf.Max(aabbFrom.z, aabbTo.z));
 
         var fromCoord = GetPositionInGrid(from);
         var toCoord = GetPositionInGrid(to);
 
         //¡Ojo que clampea a 0,0 el Outside! TODO: Checkear cuando descartar el query si estan del mismo lado
-        fromCoord = Tuple.Create(Utility.Clampi(fromCoord.Item1, 0, width), Utility.Clampi(fromCoord.Item2, 0, height));
-        toCoord = Tuple.Create(Utility.Clampi(toCoord.Item1, 0, width), Utility.Clampi(toCoord.Item2, 0, height));
+        fromCoord = Tuple.Create(Utility.Clampi(fromCoord.Item1, width, 0), Utility.Clampi(fromCoord.Item2, height, 0));
+        //fromCoord = Tuple.Create(Utility.Clampi(fromCoord.Item1, 0, width), Utility.Clampi(fromCoord.Item2, 0, height));
+        toCoord = Tuple.Create(Utility.Clampi(toCoord.Item1, width, 0), Utility.Clampi(toCoord.Item2, height, 0));
+        //toCoord = Tuple.Create(Utility.Clampi(toCoord.Item1, 0, width), Utility.Clampi(toCoord.Item2, 0, height));
 
         if (!IsInsideGrid(fromCoord) && !IsInsideGrid(toCoord))
             return Empty;
@@ -116,7 +121,7 @@ public class SpatialGrid : MonoBehaviour
             .SelectMany(cell => buckets[cell.Item1, cell.Item2])
             .Where(e =>
                 from.x <= e.transform.position.x && e.transform.position.x <= to.x &&
-                from.z <= e.transform.position.z && e.transform.position.z <= to.z
+                from.z <= e.transform.position.y && e.transform.position.y <= to.y    // from.z <= e.transform.position.z && e.transform.position.z <= to.z
             ).Where(x => filterByPosition(x.transform.position));
     }
 
@@ -124,7 +129,7 @@ public class SpatialGrid : MonoBehaviour
     {
         //quita la diferencia, divide segun las celdas y floorea
         return Tuple.Create(Mathf.FloorToInt((pos.x - x) / cellWidth),
-                            Mathf.FloorToInt((pos.z - z) / cellHeight));
+                            Mathf.FloorToInt((pos.y - y) / cellHeight));  //  Mathf.FloorToInt((pos.z - z) / cellHeight));
     }
 
     public bool IsInsideGrid(Tuple<int, int> position)
@@ -171,9 +176,9 @@ public class SpatialGrid : MonoBehaviour
     public bool showLogs = true;
     private void OnDrawGizmos()
     {
-        var rows = Generate(z, curr => curr + cellHeight)
-                .Select(row => Tuple.Create(new Vector3(x, 0, row),
-                                            new Vector3(x + cellWidth * width, 0, row)));
+        var rows = Generate(y, curr => curr + cellHeight)
+                .Select(row => Tuple.Create(new Vector3(x, row, 0),                                 //new Vector3(x, 0, row),
+                                            new Vector3(x + cellWidth * width, row, 0)));           //  new Vector3(x + cellWidth * width, 0, row)));
 
         //equivalente de rows
         /*for (int i = 0; i <= height; i++)
@@ -182,7 +187,8 @@ public class SpatialGrid : MonoBehaviour
         }*/
 
         var cols = Generate(x, curr => curr + cellWidth)
-                   .Select(col => Tuple.Create(new Vector3(col, 0, z), new Vector3(col, 0, z + cellHeight * height)));
+                   .Select(col => Tuple.Create(new Vector3(col, y, 0), new Vector3(col, y + cellHeight * height, 0)));
+        // .Select(col => Tuple.Create(new Vector3(col, 0, z), new Vector3(col, 0, z + cellHeight * height)));
 
         var allLines = rows.Take(width + 1).Concat(cols.Take(height + 1));
 

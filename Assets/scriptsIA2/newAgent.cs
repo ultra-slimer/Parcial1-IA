@@ -22,9 +22,9 @@ public class newAgent : MonoBehaviour
     public float speed = 5;
     private Vector3 _velocity;
     public Transform[] allWaypoints;
-    [Range(1.5f, 3)]
+    [Range(1.5f, 6)]
     public float range;
-    [Range(0.5f, 1.5f)]
+    [Range(0.5f, 5.5f)]
     public float chaseChangeRange;
     private Boid chasedBoid;
 
