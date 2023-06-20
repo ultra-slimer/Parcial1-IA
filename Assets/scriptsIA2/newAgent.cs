@@ -372,10 +372,10 @@ public class newAgent : MonoBehaviour
 
     }
 
-    //Aca se puede usar Linq
+    //agregado
     private void CheckClosestChase()
     {
-        
+        /*
         foreach (var item in Boid.allBoids)
         {
             if (item == chasedBoid) continue;
@@ -389,6 +389,20 @@ public class newAgent : MonoBehaviour
         {
             SendInputToFSM(PlayerInputs.PATROL);
         }
+        */
+
+        var boisClose = Boid.allBoids
+        .Where(boid => Vector3.Distance(transform.position, boid.transform.position) <= range)
+        .OrderBy(boid => Vector3.Distance(transform.position, boid.transform.position))
+        .ToList();  //se podria cambiar en el update del Patrol, y usar ToList, en vez de crear una nueva y usar un foreach...
+
+        if (boisClose.Count > 0)
+        {
+            selectBoid(boisClose[0]);
+            boisClose.RemoveAt(0);
+            SendInputToFSM(PlayerInputs.CHASE);
+        }
+
 
     }
 
