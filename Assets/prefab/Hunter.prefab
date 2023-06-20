@@ -114,7 +114,7 @@ MonoBehaviour:
   maxEnergy: 50
   rechargeTime: 1.5
   rechargeRate: 0
-  speed: 5
+  speed: 7
   allWaypoints:
   - {fileID: 0}
   - {fileID: 0}

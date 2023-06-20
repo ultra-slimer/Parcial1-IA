@@ -25,6 +25,7 @@ public class SpatialGrid : MonoBehaviour
     private Dictionary<GridEntity, Tuple<int, int>> lastPositions;
     //los "contenedores"
     private HashSet<GridEntity>[,] buckets;
+    public HashSet<GridEntity>[,] bucketspublic { get => buckets;}
 
     //el valor de posicion que tienen los elementos cuando no estan en la zona de la grilla.
     /*
@@ -60,6 +61,7 @@ public class SpatialGrid : MonoBehaviour
             e.OnMove += UpdateEntity;
             UpdateEntity(e);
         }
+
     }
 
     public void UpdateEntity(GridEntity entity)
@@ -74,7 +76,7 @@ public class SpatialGrid : MonoBehaviour
         //Lo "sacamos" de la posición anterior
         if (IsInsideGrid(lastPos))
             buckets[lastPos.Item1, lastPos.Item2].Remove(entity);
-
+            
         //Lo "metemos" a la celda nueva, o lo sacamos si salio de la grilla
         if (IsInsideGrid(currentPos))
         {

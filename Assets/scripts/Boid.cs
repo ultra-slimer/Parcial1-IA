@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Boid : MonoBehaviour
+public class Boid : GridEntity
 {
     private Vector3 _velocity;
     public float maxSpeed;
@@ -51,7 +51,6 @@ public class Boid : MonoBehaviour
         Vector3 random = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
         AddForce(random.normalized * maxSpeed);
 
-       
     }
 
 
@@ -98,7 +97,10 @@ public class Boid : MonoBehaviour
         transform.forward = _velocity;
 
         CheckBounds();
+
+        ChangePosition();
     }
+
     //Linq agregado
     Vector3 Separation()
     {

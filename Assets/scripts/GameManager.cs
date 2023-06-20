@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
             Vector3 randowSpawn = new Vector3(Random.Range(boundWidth / 2, -boundWidth / 2), Random.Range(boundHeight / 2, -boundHeight / 2));
             GameObject food = Instantiate(newFood, randowSpawn, Quaternion.identity);
             
+            
             allfoods.Add(food);
 
             _time = 0;

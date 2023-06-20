@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class newAgent : MonoBehaviour
+public class newAgent : GridEntity
 {
     public enum PlayerInputs { IDLE, PATROL, CHASE }
     private NewFSM<PlayerInputs> _myFsm;
@@ -49,6 +49,8 @@ public class newAgent : MonoBehaviour
     private bool _canConsumeChase = false;
     private Boid _boid;
 
+    public SpatialGrid SG;
+
     //private Rigidbody _myRb;
     //public Renderer _myRen;
 
@@ -62,8 +64,10 @@ public class newAgent : MonoBehaviour
         consumptionRatePatrol = _energy / consumptionTimePatrol;
         _consumptionRateChase = _energy / _consumptionTimeChase;
         rechargeRate = _energy / rechargeTime;
-    }
 
+        SendInputToFSM(PlayerInputs.PATROL);
+    }
+    //IA2 - P3
     private void Awake()
     {
         var idle = new States<PlayerInputs>("IDLE");
@@ -181,8 +185,20 @@ public class newAgent : MonoBehaviour
             */
 
             //nuevo
-            //var boidToGet = Boid.allBoids.Where().OrderBy().Take();
+            var gridPosition = SG.GetPositionInGrid(transform.position);
+            var neighbor = SG.bucketspublic[gridPosition.Item1, gridPosition.Item2];
+
+            var boidToGet = neighbor.Where(a => Vector3.Distance(transform.position, a.transform.position) <= range).OrderBy(a => Vector3.Distance(transform.position, a.transform.position)).Take(neighbor.Count).FirstOrDefault();
+
+            if (boidToGet != null)
+            {
+                var boid = boidToGet.GetComponent<Boid>();
+                selectBoid(boid);
+                neighbor.Remove(boidToGet);
+                SendInputToFSM(PlayerInputs.CHASE);
+            }
             //Linq agregado (Podria usarse Take())
+            /*
             foreach (var boids in Boid.allBoids.Where(a => Vector3.Distance(transform.position, a.transform.position) <= range).OrderBy(a => Vector3.Distance(transform.position, a.transform.position)))
             {
                 boisCloseEnough.Add(boids);
@@ -194,10 +210,12 @@ public class newAgent : MonoBehaviour
                 boisCloseEnough.RemoveAt(0);
                 SendInputToFSM(PlayerInputs.CHASE);
             }
+            */
 
+            
         };
 
-        idle.OnExit += x =>
+        patrol.OnExit += x =>
         {
             Debug.Log("Sali de Patrol");
         };
@@ -432,7 +450,10 @@ public class newAgent : MonoBehaviour
 
     Vector3 Pursuit()
     {
-        //print(_boid);
+        print(chasedBoid);
+        Vector3 steering = Vector3.zero;
+
+      
         Vector3 futurePos = chasedBoid.transform.position + chasedBoid.GetVelocity() * Time.deltaTime;
 
         Vector3 desired = futurePos - transform.position;
@@ -446,7 +467,7 @@ public class newAgent : MonoBehaviour
         desired *= speed;
 
         //Steering
-        Vector3 steering = desired - GetVelocity();
+        steering = desired - GetVelocity();
         steering = Vector3.ClampMagnitude(steering, maxForce);
 
         return steering;
