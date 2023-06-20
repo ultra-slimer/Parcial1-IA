@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
+    public SpatialGrid SG;
+
     public bool canSpawn;
     public float TimeSpawn;
     float _time;

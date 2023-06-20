@@ -65,6 +65,11 @@ public class newAgent : GridEntity
         _consumptionRateChase = _energy / _consumptionTimeChase;
         rechargeRate = _energy / rechargeTime;
 
+        //Se rompe al agregarlo a la grilla como entidad
+        //Empieza a ejecutar el Pursuit al principio, osea su estado pasa Chase, no tiene sentido....
+        //GameManager.instance.SG.AddEntity(this);
+
+
         SendInputToFSM(PlayerInputs.PATROL);
     }
     //IA2 - P3

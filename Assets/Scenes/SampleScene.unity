@@ -8676,6 +8676,7 @@ MonoBehaviour:
   boundWidth: 200
   foodPrefab: {fileID: 1997805489325109188, guid: 2e4bba51ad4f50547b6487b8bd676ec8, type: 3}
   allfoods: []
+  SG: {fileID: 451663409}
   canSpawn: 0
   TimeSpawn: 2
 --- !u!4 &1857977250

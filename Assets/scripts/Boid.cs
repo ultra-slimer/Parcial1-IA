@@ -51,6 +51,8 @@ public class Boid : GridEntity
         Vector3 random = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
         AddForce(random.normalized * maxSpeed);
 
+        GameManager.instance.SG.AddEntity(this);
+
     }
 
 
