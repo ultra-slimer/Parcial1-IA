@@ -181,7 +181,8 @@ public class newAgent : MonoBehaviour
             */
 
             //nuevo
-            //var boidGet = Boid.allBoids.Where().OrderBy().Take();
+            //var boidToGet = Boid.allBoids.Where().OrderBy().Take();
+            //Linq agregado (Podria usarse Take())
             foreach (var boids in Boid.allBoids.Where(a => Vector3.Distance(transform.position, a.transform.position) <= range).OrderBy(a => Vector3.Distance(transform.position, a.transform.position)))
             {
                 boisCloseEnough.Add(boids);
@@ -370,8 +371,11 @@ public class newAgent : MonoBehaviour
         }
 
     }
+
+    //Aca se puede usar Linq
     private void CheckClosestChase()
     {
+        
         foreach (var item in Boid.allBoids)
         {
             if (item == chasedBoid) continue;

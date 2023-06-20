@@ -54,6 +54,7 @@ public class SpatialGrid : MonoBehaviour
             .Select(x => x.GetComponent<GridEntity>())
             .Where(x => x != null);
 
+        //Esto busca a todos los objetos ya instanciados en el awake, sirve para los boids, pero no para la comida, ya que estas se van creando nuevas
         foreach (var e in ents)
         {
             e.OnMove += UpdateEntity;

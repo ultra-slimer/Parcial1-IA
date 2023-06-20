@@ -92,8 +92,6 @@ public class Boid : MonoBehaviour
             _separationWeight = separationWeight;
         }
 
-
-
         AddForce(Separation() * _separationWeight + Alignment() * _alignmentWeight + Cohesion() * _cohesionWeight);
 
         transform.position += _velocity * Time.deltaTime;
@@ -101,11 +99,10 @@ public class Boid : MonoBehaviour
 
         CheckBounds();
     }
-
+    //Linq agregado
     Vector3 Separation()
     {
         Vector3 desired = Vector3.zero;
-
         desired = allBoids.Where(boid => (boid.transform.position - transform.position).magnitude <= viewRadius).Aggregate(desired,(curent, boids) => curent + (boids.transform.position - transform.position));
 
         /* anterior
@@ -129,6 +126,7 @@ public class Boid : MonoBehaviour
         return CalculateSteering(desired);
     }
 
+    //Linq agregado 
     Vector3 Alignment()
     {
         Vector3 desired = Vector3.zero;
@@ -155,7 +153,7 @@ public class Boid : MonoBehaviour
 
         return CalculateSteering(desired);
     }
-
+    //Linq agregado
     Vector3 Cohesion()
     {
         Vector3 desired = Vector3.zero;
@@ -183,7 +181,7 @@ public class Boid : MonoBehaviour
     }
 
     
-
+    //Aca se puede usar Linq
     Vector3 Arrive()
     {
         foreach (var item in GameManager.instance.allfoods)
