@@ -51,6 +51,8 @@ public class Boid : GridEntity
         Vector3 random = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
         AddForce(random.normalized * maxSpeed);
 
+        //IA2 - P2 --------------------------------------------------------------
+
         GameManager.instance.SG.AddEntity(this);
 
     }
@@ -93,6 +95,8 @@ public class Boid : GridEntity
             _separationWeight = separationWeight;
         }
 
+        //IA2 - P1 -------------------------------------------------------------------------------
+
         AddForce(Separation() * _separationWeight + Alignment() * _alignmentWeight + Cohesion() * _cohesionWeight);
 
         transform.position += _velocity * Time.deltaTime;
@@ -103,7 +107,7 @@ public class Boid : GridEntity
         ChangePosition();
     }
 
-    //Linq agregado
+    //Linq agregado   IA2 - P1 -----------------------------------------------------------------------------
     Vector3 Separation()
     {
         Vector3 desired = Vector3.zero;
@@ -130,7 +134,7 @@ public class Boid : GridEntity
         return CalculateSteering(desired);
     }
 
-    //Linq agregado 
+    //Linq agregado  IA2 - P1 ----------------------------------------------------------
     Vector3 Alignment()
     {
         Vector3 desired = Vector3.zero;
@@ -157,7 +161,7 @@ public class Boid : GridEntity
 
         return CalculateSteering(desired);
     }
-    //Linq agregado
+    //Linq agregado     //IA2 - P1 -----------------------------------------------------------
     Vector3 Cohesion()
     {
         Vector3 desired = Vector3.zero;
@@ -306,7 +310,9 @@ public class Boid : GridEntity
 
     public void Death(Boid c)
     {
+        c.OnMove -= GameManager.instance.SG.UpdateEntity;
         Destroy(c.gameObject);
+        //GameManager.instance.SG.OnDestro
         allBoids.Remove(c);
     }
 }

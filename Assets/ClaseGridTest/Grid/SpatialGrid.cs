@@ -152,9 +152,12 @@ public class SpatialGrid : MonoBehaviour
 
     void OnDestroy()
     {
+        
         var ents = RecursiveWalker(transform).Select(x => x.GetComponent<GridEntity>()).Where(x => x != null);
         foreach (var e in ents)
             e.OnMove -= UpdateEntity;
+        
+       
     }
 
     #region GENERATORS

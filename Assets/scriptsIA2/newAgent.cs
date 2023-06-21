@@ -72,7 +72,7 @@ public class newAgent : GridEntity
 
         SendInputToFSM(PlayerInputs.PATROL);
     }
-    //IA2 - P3
+    //IA2 - P3 -------------------------------------------------------
     private void Awake()
     {
         var idle = new States<PlayerInputs>("IDLE");
@@ -189,9 +189,9 @@ public class newAgent : GridEntity
             }
             */
 
-            //nuevo
+            //IA2 - P1 &&  IA2 - P2--------------------------------------------------------------------------------
             var gridPosition = SG.GetPositionInGrid(transform.position);
-            var neighbor = SG.bucketspublic[gridPosition.Item1, gridPosition.Item2];
+            var neighbor = SG.bucketspublic[gridPosition.Item1, gridPosition.Item2].ToList(); 
 
             var boidToGet = neighbor.Where(a => Vector3.Distance(transform.position, a.transform.position) <= range).OrderBy(a => Vector3.Distance(transform.position, a.transform.position)).Take(neighbor.Count).FirstOrDefault();
 
@@ -199,8 +199,22 @@ public class newAgent : GridEntity
             {
                 var boid = boidToGet.GetComponent<Boid>();
                 selectBoid(boid);
-                neighbor.Remove(boidToGet);
+                neighbor.Remove(boid);
+
                 SendInputToFSM(PlayerInputs.CHASE);
+                /*
+                if (boid != null)
+                {
+                    selectBoid(boid);
+                    neighbor.Remove(boidToGet);
+                    
+                    SendInputToFSM(PlayerInputs.CHASE);
+                }
+                else
+                {
+                    print("no es un boid");
+                }
+                */
             }
             //Linq agregado (Podria usarse Take())
             /*
@@ -413,7 +427,7 @@ public class newAgent : GridEntity
             SendInputToFSM(PlayerInputs.PATROL);
         }
         */
-
+        //IA2 - P1 ---------------------------------------------------------------
         var boisClose = Boid.allBoids
         .Where(boid => Vector3.Distance(transform.position, boid.transform.position) <= range)
         .OrderBy(boid => Vector3.Distance(transform.position, boid.transform.position))

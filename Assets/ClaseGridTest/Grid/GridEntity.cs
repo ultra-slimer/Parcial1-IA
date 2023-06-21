@@ -14,7 +14,12 @@ public class GridEntity : MonoBehaviour
 
     private void Awake()
     {
-        _rend = GetComponent<Renderer>();
+        //_rend = GetComponent<Renderer>();
+    }
+
+    private void Start()
+    {
+        //GameManager.instance.SG.AddEntity(this);
     }
 
     void Update() {
