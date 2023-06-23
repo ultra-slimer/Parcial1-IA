@@ -72,7 +72,7 @@ public class newAgent : GridEntity
 
         SendInputToFSM(PlayerInputs.PATROL);
     }
-    //IA2 - P3 -------------------------------------------------------
+    //IA2 - P3 ------------------------------------------------------------------------
     private void Awake()
     {
         var idle = new States<PlayerInputs>("IDLE");
@@ -193,15 +193,22 @@ public class newAgent : GridEntity
             var gridPosition = SG.GetPositionInGrid(transform.position);
             var neighbor = SG.bucketspublic[gridPosition.Item1, gridPosition.Item2].ToList(); 
 
-            var boidToGet = neighbor.Where(a => Vector3.Distance(transform.position, a.transform.position) <= range).OrderBy(a => Vector3.Distance(transform.position, a.transform.position)).Take(neighbor.Count).FirstOrDefault();
-
+            var boidToGet = neighbor.Where(boid => Vector3.Distance(transform.position, boid.transform.position) <= range).OrderBy(boid => Vector3.Distance(transform.position, boid.transform.position)).Take(neighbor.Count).FirstOrDefault();
+            print(boidToGet);
             if (boidToGet != null)
             {
                 var boid = boidToGet.GetComponent<Boid>();
-                selectBoid(boid);
-                neighbor.Remove(boid);
+                if (boid != null)
+                {
+                    selectBoid(boid);
+                    //neighbor.Remove(boid);
 
-                SendInputToFSM(PlayerInputs.CHASE);
+                    SendInputToFSM(PlayerInputs.CHASE);
+                }
+                else
+                {
+                    //print("no es un boid");
+                }
                 /*
                 if (boid != null)
                 {
@@ -339,7 +346,7 @@ public class newAgent : GridEntity
     public void selectBoid(Boid b)
     {
         chasedBoid = b;
-        print(chasedBoid);
+        //print(chasedBoid);
     }
     public Boid getBoid()
     {

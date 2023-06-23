@@ -94,7 +94,16 @@ public class SpatialGrid : MonoBehaviour
         else
             lastPositions.Remove(entity);
     }
+    //funcion agregada para sacar entidades IA2 - P2 ---------------------------------------------------------------------
+    public void EraseEntity(GridEntity entity)
+    {
+        entity.OnMove -= UpdateEntity;
 
+        foreach (var a in buckets)
+        {
+            a.Remove(entity);
+        }
+    }
     public IEnumerable<GridEntity> Query(Vector3 aabbFrom, Vector3 aabbTo, Func<Vector3, bool> filterByPosition)
     {
         var from = new Vector3(Mathf.Min(aabbFrom.x, aabbTo.x), Mathf.Min(aabbFrom.y, aabbTo.y), 0);
@@ -150,7 +159,7 @@ public class SpatialGrid : MonoBehaviour
             0 <= position.Item2 && position.Item2 < height;
     }
 
-    void OnDestroy()
+    public void OnDestroy()
     {
         
         var ents = RecursiveWalker(transform).Select(x => x.GetComponent<GridEntity>()).Where(x => x != null);

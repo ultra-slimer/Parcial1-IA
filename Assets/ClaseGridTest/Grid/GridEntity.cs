@@ -37,7 +37,12 @@ public class GridEntity : MonoBehaviour
         OnMove(this);
     }
 
-
+    //Esto es mas que nada para la comida, ya que en el GameManager no encontraba manera de mandar la comida como una entidad...
+    public void DestroyEntity()
+    {
+        print("muerto");
+        GameManager.instance.SG.EraseEntity(this);
+    }
 
 
 }

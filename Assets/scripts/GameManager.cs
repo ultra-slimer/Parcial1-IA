@@ -97,6 +97,8 @@ public class GameManager : MonoBehaviour
 
     public void DestroyFood(GameObject food)
     {
+        //IA2 - P2 --------------------------------------------------
+        food.GetComponent<GridEntity>().DestroyEntity();
         Destroy(food);
         
         allfoods.Remove(food);

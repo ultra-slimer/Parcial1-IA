@@ -54,6 +54,7 @@ public class Boid : GridEntity
         //IA2 - P2 --------------------------------------------------------------
 
         GameManager.instance.SG.AddEntity(this);
+        //this.OnMove += GameManager.instance.SG.UpdateEntity;
 
     }
 
@@ -101,6 +102,7 @@ public class Boid : GridEntity
 
         transform.position += _velocity * Time.deltaTime;
         transform.forward = _velocity;
+        GameManager.instance.SG.UpdateEntity(this);
 
         CheckBounds();
 
@@ -189,10 +191,55 @@ public class Boid : GridEntity
     }
 
     
-    //Aca se puede usar Linq
+    //IA2 - P1 && IA2 - P2 ------------------------------------------------------------
     Vector3 Arrive()
     {
-        foreach (var item in GameManager.instance.allfoods)
+        Vector3 desired = Vector3.zero;
+        var gridPosition = GameManager.instance.SG.GetPositionInGrid(transform.position);
+        var neighbor = GameManager.instance.SG.bucketspublic[gridPosition.Item1, gridPosition.Item2].ToList();
+
+        var foodToGet = neighbor.Where(food => Vector3.Distance(transform.position, food.transform.position) <= arriveRadius && food is Food).OrderBy(food => Vector3.Distance(transform.position, food.transform.position)).Take(neighbor.Count).FirstOrDefault();
+        if (foodToGet != null)
+        {
+            var foodComponent = foodToGet.GetComponent<Food>();
+            if (foodComponent != null)
+            {
+                
+                target = foodComponent.transform;
+                gameTarget = foodToGet.gameObject;
+                _arriveWeight = arriveWeight;
+
+                desired = target.position - transform.position;
+
+                float speed = maxSpeed * (desired.magnitude / arriveRadius);
+                desired.Normalize();
+                desired *= speed;
+
+
+                if (desired.magnitude <= 0.3f)
+                {
+                    GameManager.instance.DestroyFood(gameTarget);
+                    _arriveWeight = 0;
+                    return Vector3.zero;
+                }
+
+                return CalculateSteering(desired);
+            }
+            else
+            {
+                _arriveWeight = 0;
+                return Vector3.zero;
+            }
+
+        }
+
+
+        Vector3 steering = desired - _velocity;
+        steering = Vector3.ClampMagnitude(steering, maxForce);
+
+        return steering;
+        /*
+        foreach (var item in neighbor)
         {
             if (Vector3.Distance(transform.position, item.transform.position) <= arriveRadius && item != null)
             {
@@ -200,14 +247,14 @@ public class Boid : GridEntity
                 target = item.transform;
                 gameTarget = item;
                 _arriveWeight = arriveWeight;
-                /*
+                
                                 transform.position += _velocity * Time.deltaTime;
                                 transform.forward = _velocity;
 
 
                                 AddForce(Arrive(target.position));
 
-                               */
+                               
 
                 CheckBounds();
 
@@ -235,7 +282,7 @@ public class Boid : GridEntity
 
             return CalculateSteering(desired);
         }
-        /*
+        
         Vector3 steering = desired - _velocity;
         steering = Vector3.ClampMagnitude(steering, maxForce);
 
@@ -307,11 +354,13 @@ public class Boid : GridEntity
     {
         return _velocity;
     }
-
+    //IA2 - P2 ---------------------------------------------------------------------------
     public void Death(Boid c)
     {
-        c.OnMove -= GameManager.instance.SG.UpdateEntity;
+        GameManager.instance.SG.EraseEntity(c);
         Destroy(c.gameObject);
+        //GameManager.instance.SG.UpdateEntity(c);
+        //GameManager.instance.SG.OnDestroy();
         //GameManager.instance.SG.OnDestro
         allBoids.Remove(c);
     }
